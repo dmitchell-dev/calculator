@@ -5,28 +5,28 @@ from calculator.forms import HomeForm
 
 # Create your views here.
 class HomePage(TemplateView):
-    template_name = 'calculator/home.html'
+    template_name = "calculator/home.html"
 
     def get(self, request, *args, **kwargs):
         form = HomeForm()
-        return render(request,self.template_name, {'form':form})
+        return render(request, self.template_name, {"form": form})
 
-    def post(self,request):
+    def post(self, request):
         form = HomeForm(request.POST)
         if form.is_valid():
-            text = form.cleaned_data['num1']
-            text2 = form.cleaned_data['num2']
-            if 'add' in request.POST:
+            text = form.cleaned_data["num1"]
+            text2 = form.cleaned_data["num2"]
+            if "add" in request.POST:
                 result = text + text2
-            elif 'sub' in request.POST:
+            elif "sub" in request.POST:
                 result = text - text2
-            elif 'mul' in request.POST:
+            elif "mul" in request.POST:
                 result = text * text2
-            elif 'div' in request.POST:
+            elif "div" in request.POST:
                 result = text / text2
 
             form = HomeForm()
-            #return redirect ('home:home')
+            # return redirect ('home:home')
 
-        args = {'form': form , 'result': result}
-        return render(request, self.template_name, args )
+        args = {"form": form, "result": result}
+        return render(request, self.template_name, args)
