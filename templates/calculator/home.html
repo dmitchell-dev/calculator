@@ -16,16 +16,14 @@
           {% csrf_token %}
           {{ form.as_p }}
 
-          <button type="submit" name="add">ADD</button>
-          <button type="submit" name="sub">SUB</button>
-          <button type="submit" name="mul">MUL</button>
-          <button type="submit" name="div">DIV</button>
+          <button type="submit" name="calculate">Calculate</button>
 
       </form>
 
       <br/>
       <br/>
-       <h3>Result:  {{ result }}</h3>
+
+      <h3>Intrinsic Value: £{{ result|floatformat:2 }}</h3>
 
     </div>
 
